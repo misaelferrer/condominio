@@ -72,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'condominio.wsgi.application'
+WSGI_APPLICATION = 'condominio.wsgi'
 
 
 # Database
