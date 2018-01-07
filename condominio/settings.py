@@ -35,7 +35,10 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'censo.apps.CensoConfig',
+    'censo',
+    'votacion',
+    'finanzas',
+    'guardias',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
