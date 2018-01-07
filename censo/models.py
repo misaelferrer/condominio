@@ -2,11 +2,49 @@ from django.db import models
 
 # Create your models here.
 
+class CarnetPatria(models.Model):
+	nombre = models.CharField(max_length=15, null=True)  # CharField
+	serial = models.CharField(max_length=15, null=True) # CharField
+	codigo = models.CharField(max_length=15, null=True)  # CharField
+	imagen = models.ImageField(upload_to='static/carnet_patria/', null=True)  # ImageField
+
+	def __str__ (self):
+		return self.serial
+
 class Mes(models.Model):
 	mes = models.CharField(max_length=15, null=True) # CharField
 
 	def __str__ (self):
 		return self.mes
+
+
+class Documento(models.Model):
+	nombre = models.CharField(max_length=15, null=True) # CharField
+	documento = models.ImageField(upload_to='static/documentos/', null=True)  # ImageField
+	def __str__ (self):
+		return self.nombre
+
+
+class Mision(models.Model):
+	mision = models.CharField(max_length=35, null=True) # CharField
+
+	def __str__ (self):
+		return self.mision
+
+
+class Sexo(models.Model):
+	sexo = models.CharField(max_length=15, null=True) # CharField
+
+	def __str__ (self):
+		return self.sexo
+
+
+class Nacionalidad(models.Model):
+	nacionalidad = models.CharField(max_length=15, null=True) # CharField
+
+	def __str__ (self):
+		return self.nacionalidad
+
 
 class Calle(models.Model):
 	nombre = models.CharField(max_length=50,null=True) # TextField
@@ -15,14 +53,8 @@ class Calle(models.Model):
 	def __str__ (self):
 		return self.nombre 
 
-class TipoParentesco(models.Model):
-	tipoParentesco = models.CharField(max_length=30, null=True) # CharField
-
-	def __str__ (self):
-		return self.tipoParentesco
-
 class Casa(models.Model):
-	foto = models.ImageField(upload_to='casas/', null=True)  # ImageField
+	foto = models.ImageField(upload_to='static/casas/', null=True)  # ImageField
 	numero = models.CharField(max_length=10, null=True) # CharField
 	observaciones = models.TextField(null=True) # TextField
 	calle = models.ForeignKey(Calle, on_delete=models.DO_NOTHING, null=True) # Calle
@@ -30,28 +62,6 @@ class Casa(models.Model):
 
 	def __str__ (self):
 		return self.numero
-
-class Deuda(models.Model):
-	deuda = models.FloatField(null=True) # FloatField
-	anio = models.IntegerField(null=True) # IntegerField
-	mes = models.ForeignKey(Mes, on_delete=models.DO_NOTHING, null=True) # Mes
-	casa = models.ForeignKey(Casa, on_delete=models.DO_NOTHING, null=True) # Casa
-	fecha_carga = models.DateField(null=True) # DateField
-	pagado = models.BooleanField(default=False) # BooleanField
-
-	def __str__ (self):
-		return self.mes + self.casa
-
-class Pago(models.Model):
-	casa = models.ForeignKey(Casa, on_delete=models.DO_NOTHING, null=True) # Casa
-	fecha_pago = models.DateField(null=True) # DateField
-	deuda = models.ForeignKey(Deuda, on_delete=models.DO_NOTHING, null=True) # Deuda
-	pago = models.FloatField(null=True) # FloatField
-	concepto = models.CharField(max_length=30, null=True) # CharField
-
-	def __str__ (self):
-		return self.concepto 
-
 
 class Discapacidad(models.Model):
 	discapacidad = models.CharField(max_length=30, null=True) # CharField
@@ -66,19 +76,15 @@ class Oficio(models.Model):
 	def __str__ (self):
 		return self.oficio 
 
-class Eleccion(models.Model):
-	titulo = models.CharField(max_length=30, null=True) # CharField
-	fecha = models.DateField(null=True) # DateField
-
-	def __str__ (self):
-		return self.titulo 
 
 class TratamientoPermanente(models.Model):
 	enfermedad = models.CharField(max_length=30, null=True) # CharField
 	medicina = models.CharField(max_length=30, null=True) # CharField
+	informe_medico = models.ImageField(upload_to='static/informes_medicos/', null=True)  # ImageField
+	recipe = models.ImageField(upload_to='static/recipes/', null=True)  # ImageField
 
 	def __str__ (self):
-		return self.enfermedad + self.medicina
+		return self.enfermedad + ' - ' + self.medicina
 
 class Habilidad(models.Model):
 	habilidad = models.CharField(max_length=30, null=True) # CharField
@@ -91,15 +97,6 @@ class InstitucionEducativa(models.Model):
 
 	def __str__ (self):
 		return self.institucion_educativa 
-
-class CronogramaGuardia(models.Model):
-	hora_inicio = models.TimeField(null=True) # TimeField
-	hora_fin = models.TimeField(null=True) # TimeField
-	titulo = models.CharField(max_length=40, null=True) # CharField
-	observaciones = models.TextField(null=True) # TextField
-
-	def __str__ (self):
-		return self.titulo 
 
 class Grado(models.Model):
 	grado = models.CharField(max_length=30, null=True) # CharField
@@ -121,7 +118,7 @@ class Familia(models.Model):
 		return self.nombre
 
 class Titulo(models.Model):
-	titulo = models.CharField(max_length=30, null=True) # CharField
+	titulo = models.CharField(max_length=30) # CharField
 	institucion_educativa = models.ForeignKey(InstitucionEducativa, on_delete=models.DO_NOTHING, null=True) # InstitucionEducativa
 
 	def __str__ (self):
@@ -129,40 +126,38 @@ class Titulo(models.Model):
 
 
 class Persona(models.Model):
-	foto = models.ImageField(upload_to='casas/', null=True) # ImageField
-	nacionalidad = models.CharField(max_length=20, null=True) # CharField
+	foto = models.ImageField(upload_to='static/personas/', null=True) # ImageField
+	nacionalidad = models.ForeignKey(Nacionalidad, on_delete=models.DO_NOTHING, null=True) # Nacionalidad
 	cedula = models.CharField(max_length=10, null=True) # CharField
 	nombre = models.CharField(max_length=20, null=True) # CharField
 	apellido = models.CharField(max_length=20, null=True) # CharField
-	discapaz = models.BooleanField(default=False) # BooleanField
+	sexo = models.ForeignKey(Sexo, on_delete=models.DO_NOTHING, null=True)  # Sexo
+	documento = models.ManyToManyField(Documento)  # Documento
+	carnet_patria = models.ForeignKey(CarnetPatria, on_delete=models.DO_NOTHING, null=True)  # CarnetPatria
+	discapaz = models.BooleanField() # BooleanField
 	discapacidad = models.ManyToManyField(Discapacidad) # Discapacidad
-	sexo = models.BooleanField(default=False) # BooleanField
+	tratamiento_permanente = models.ManyToManyField(TratamientoPermanente)  # TratamientoPermanente
+	mision = models.ManyToManyField(Mision)  # Mision
 	familia = models.ForeignKey(Familia, on_delete=models.DO_NOTHING, null=True) # Familia
 	oficio = models.ForeignKey(Oficio, on_delete=models.DO_NOTHING, null=True) # Oficio
 	fecha_nacimiento = models.DateField(null=True) # DateField
 	vive_desde = models.IntegerField(null=True) # IntegerField
-	habilidad = models.ForeignKey(Habilidad, on_delete=models.DO_NOTHING, null=True) # Habilidad
+	habilidad = models.ManyToManyField(Habilidad) # Habilidad
 	titulos = models.ManyToManyField(Titulo) # Titulo
 	ultimo_grado_aprobado = models.ForeignKey(Grado, on_delete=models.DO_NOTHING, null=True) # Grado
-	indigena = models.BooleanField(default=False) # BooleanField
+	indigena = models.BooleanField() # BooleanField
 	etnia = models.ForeignKey(Etnia, on_delete=models.DO_NOTHING, null=True) # Etnia
 	ingreso_mensual = models.FloatField(null=True) # FloatField
 	observaciones = models.TextField(null=True) # TextField
-	tratamiento_permanente = models.ManyToManyField(TratamientoPermanente) # TratamientoPermanente
 
 	def __str__ (self):
-		return self.nombre + self.apellido
+		return self.nombre + ' - ' + self.apellido
 
-class Monedas(models.Model):
-	persona = models.ForeignKey(Persona, on_delete=models.DO_NOTHING, null=True) # Persona
-	fecha_entrega = models.DateField(null=True) # DateField
-	deuda = models.ForeignKey(Deuda, on_delete=models.DO_NOTHING, null=True) # Deuda
-	oficio = models.ForeignKey(Oficio, on_delete=models.DO_NOTHING, null=True) # Oficio
-	concepto = models.TextField(null=True) # TextField
+class TipoParentesco(models.Model):
+	tipoParentesco = models.CharField(max_length=30, null=True) # CharField
 
 	def __str__ (self):
-		return self.concepto
-
+		return self.tipoParentesco
 
 class Parentesco(models.Model):
 	persona = models.ForeignKey(Persona, related_name='persona', on_delete=models.DO_NOTHING, null=True) # Persona
@@ -172,45 +167,3 @@ class Parentesco(models.Model):
 	def __str__ (self):
 		return self.tipoParentesco
 
-
-class Candidatura(models.Model):
-	nombre = models.CharField(max_length=30, null=True)  # CharField
-	persona = models.ManyToManyField(Persona)  # persona
-
-	def __str__(self):
-		return self.nombre + self.persona
-
-class Boleta(models.Model):
-	titulo = models.CharField(max_length=30, null=True) # CharField
-	eleccion = models.ForeignKey(Eleccion, on_delete=models.DO_NOTHING, null=True) # Eleccion
-	candidatura = models.ManyToManyField(Candidatura) # Candidatura
-
-	def __str__ (self):
-		return self.titulo
-
-
-class Gasto(models.Model):
-	concepto = models.CharField(max_length=30, null=True)  # CharField
-	persona = models.ForeignKey(Persona, on_delete=models.DO_NOTHING, null=True)  # persona
-	fecha = models.DateField(null=True)  # DateField
-	observacion = models.TextField(null=True)  # TextField
-
-	def __str__(self):
-		return self.concepto
-
-
-class Guardia(models.Model):
-	persona = models.ForeignKey(Persona, on_delete=models.DO_NOTHING, null=True) # Persona
-	observaciones = models.TextField(null=True) # TextFiel
-	fecha = models.DateField(null=True) # DateField
-
-	def __str__ (self):
-		return self.observaciones 
-
-
-class Votacion(models.Model):
-	hora = models.TimeField(null=True) # TimeField
-	candidato = models.ForeignKey(Candidatura, on_delete=models.DO_NOTHING, null=True) # Candidatura
-
-	def __str__ (self):
-		return self.candidato + self.hora
