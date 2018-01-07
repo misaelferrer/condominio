@@ -81,11 +81,11 @@ WSGI_APPLICATION = 'condominio.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'condominio',
-        'USER': 'condominio',
-        'PASSWORD': 'midjangocondominio',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': 'dasqft02ntl19a',
+        'USER': 'ykdjhwvkjfztvn',
+        'PASSWORD': 'f0c0dda12919e5413f44f2199891ee989fd9aaf486ff441b4cd57d26f8ec01d3',
+        'HOST': 'ec2-54-195-241-106.eu-west-1.compute.amazonaws.com',
+        'PORT': '5432',
     }
 }
 DATABASES['default'] =  dj_database_url.config()
