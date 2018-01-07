@@ -11,8 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 import dj_database_url
  
-DATABASES['default'] =  dj_database_url.config()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
  
 
 import os
@@ -82,14 +81,15 @@ WSGI_APPLICATION = 'condominio.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dasqft02ntl19a',
-        'USER': 'ykdjhwvkjfztvn',
-        'PASSWORD': 'f0c0dda12919e5413f44f2199891ee989fd9aaf486ff441b4cd57d26f8ec01d3',
-        'HOST': 'ec2-54-195-241-106.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432',
+        'NAME': 'condominio',
+        'USER': 'condominio',
+        'PASSWORD': 'midjangocondominio',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
-
+DATABASES['default'] =  dj_database_url.config()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
