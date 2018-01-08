@@ -20,5 +20,6 @@ from censo import views
 urlpatterns = [
 	path('', views.index, name='index'),
 	path('censo/', include('censo.urls')),
+	path('grappelli/', include('jet.urls', 'jet')), # grappelli URLS
     path('admin/', admin.site.urls),
 ]
