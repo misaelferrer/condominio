@@ -1,0 +1,698 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<div lang="es">
+<head>
+	<meta charset="UTF-8">
+
+	{% block extrastatic %}
+	{% endblock %}
+
+	<title>{% block title %}Condominios | Pagina Principal {% endblock %}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Footwear Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+	<link href="{% static 'css/bootstrap.min.css' %}" type="text/css" rel="stylesheet" media="all">
+	<link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="all">
+	<link href="{% static 'css/font-awesome.css' %}" rel="stylesheet"> <!-- font-awesome icons -->
+	<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}" type="text/css" media="all"/> <!-- Owl-Carousel-CSS -->
+	<link href="{% static 'css/simplelightbox.css' %}" rel="stylesheet" type="text/css">
+<!-- //Custom Theme files -->
+
+<!-- web-fonts -->
+	<link href="//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i" rel="stylesheet">
+<!-- //web-fonts -->
+</head>
+<main>
+
+<!-- js -->
+	<script src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
+<!-- //js -->
+	{% block extrajs %}
+	{% endblock %}
+	<!-- banner -->
+	<div class="agileits-banner jarallax">
+		<!-- navigation -->
+		<div class ="top-nav">
+			<div class="container">
+				<nav class="navbar navbar-default">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+					<div class="search">
+						<input class="search_box" type="checkbox" id="search_box">
+						<label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
+						<div class="search_form">
+							<form action="#" method="post">
+								<input type="text" name="Search" placeholder="Search..." required="">
+								<input type="submit" value="Send">
+							</form>
+						</div>
+					</div>
+					<!-- navbar-header -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-left">
+							{% for link in links %}
+								{% if forloop.first %}
+									<li><a href="{{ link.link }}" class="hvr-underline-from-center active">{{ link.nombre }}</a></li>
+								{% else %}
+									<li><a href="{{ link.link }}" class="hvr-underline-from-center scroll">{{ link.nombre }}</a></li>
+								{% endif %}
+        					{% endfor %}
+						</ul>
+					</div>
+					<div class="clearfix"> </div>
+				</nav>
+			</div>
+		</div>
+		<!-- //navigation -->
+		<!-- banner-text -->
+		<div class="banner-text">
+			<div class="container">
+				<div class="banner-w3lstext">
+					<h1><a href="index.html">Titulo1<span>Slogan1</span></a></h1>
+					<p>Consulte esta información importante</p>
+				</div>
+			</div>
+		</div>
+		<!-- //banner-text -->
+	</div>
+	<!-- //banner -->
+	<!-- banner-bottom-grids -->
+	<div id="about" class="banner-bottom-grids">
+		<div class="col-md-7 col-xs-7 banner-bottom-grid-left animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+			<h2>Para nosotros es muy importante la <span> Transparencia Financiera</span></h2>
+			<p>Por esta razón presentamos ante toda la comunidad la relación de ingresos y egresos que administramos para nuestra comunidad.</p>
+			<div class="more">
+				<a href="#myModal" data-toggle="modal" >Consultar Ingresos-Egresos...</a>
+			</div>
+		</div>
+		<div class="col-md-5 col-xs-5 banner-bottom-grid animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+			<img src="{% static 'images/img1.jpg' %}" alt=" " class="img-responsive" />
+			<div class="banner-bottom-grid1">
+				<div class="banner-bottom-grid1-pos animated wow fadeInUpBig" data-wow-duration="1000ms" data-wow-delay="500ms">
+					<h3>"La injusticia es humana, pero más humana es la lucha contra la injusticia"</h3>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+	<!-- //banner-bottom-grids -->
+	<!-- progress -->
+	<div class="wthree_progress" id="work">
+		<div class="col-md-6 col-xs-6 w3_agileits_progress_right">
+			<h3 class="agileinfo_title">Our <span>WorkProgress</span> </h3>
+			<p>Ut vel condimentum tortor. Donec placerat mi vel ante volutpat ultrices.
+				Praesent vestibulum, nisi vitae aliquet elementum, dolor libero finibus ex,
+				et condimentum tellus nunc vel dolor. </p>
+		</div>
+		<div class="col-md-6 col-xs-6 w3_agileits_progress_left">
+			<div class="agileits_progress_left_grid">
+				<div class="agileits_progress_left_grid_pos">
+					<div class="col-xs-3 w3ls_progress_left1">
+						<div class="w3ls_progress_left1_grid">
+							<i class="fa fa-facebook" aria-hidden="true"></i>
+							<p>likes</p>
+							<h4 class="counter">43,454</h4>
+						</div>
+					</div>
+					<div class="col-xs-3 w3ls_progress_left1">
+						<div class="w3ls_progress_left1_grid">
+							<i class="fa fa-twitter w3_twitter" aria-hidden="true"></i>
+							<p>Followers</p>
+							<h4 class="counter">23,543</h4>
+						</div>
+					</div>
+					<div class="col-xs-3 w3ls_progress_left1">
+						<div class="w3ls_progress_left1_grid">
+							<i class="fa fa-google-plus w3_google" aria-hidden="true"></i>
+							<p>Circles</p>
+							<h4 class="counter">56,321</h4>
+						</div>
+					</div>
+					<div class="col-xs-3 w3ls_progress_left1">
+						<div class="w3ls_progress_left1_grid">
+							<i class="fa fa-linkedin w3_linkedin" aria-hidden="true"></i>
+							<p>Connections</p>
+							<h4 class="counter">12,345</h4>
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+	<!-- //progress -->
+	<!-- Stats -->
+	<script src="{% static 'js/waypoints.min.js' %}"></script>
+	<script src="{% static 'js/counterup.min.js' %}"></script>
+	<script>
+		jQuery(document).ready(function( $ ) {
+			$('.counter').counterUp({
+				delay: 10,
+				time: 2000
+			});
+		});
+	</script>
+	<!-- //Stats -->
+	<!-- services -->
+	<div id="services" class="services">
+		<div class="container">
+			<h3 class="agileinfo_title">Nuestros <span>Servicios</span> </h3>
+			<div class="services-agileinfo">
+				<div class="col-sm-4 col-xs-6 services-w3grids">
+					<div class="services-icon hvr-radial-in">
+						<i class="fa fa-wpforms" aria-hidden="true"></i>
+					</div>
+					<p>Consulta tu Factura</p>
+				</div>
+				<div class="col-sm-4 col-xs-6 services-w3grids">
+					<div class="services-icon hvr-radial-in">
+						<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+					</div>
+					<p>Reserva Espacios Comunes</p>
+				</div>
+				<div class="col-sm-4 col-xs-6 services-w3grids">
+					<div class="services-icon hvr-radial-in">
+						<i class="fa fa-truck" aria-hidden="true"></i>
+					</div>
+					<p>Notificar Mudanza</p>
+				</div>
+				<div class="col-sm-4 col-xs-6 services-w3grids">
+					<div class="services-icon hvr-radial-in">
+						<i class="fa fa-info" aria-hidden="true"></i>
+					</div>
+					<p>Asesorias y Consultas</p>
+				</div>
+				<div class="col-sm-4 col-xs-6 services-w3grids">
+					<div class="services-icon hvr-radial-in">
+					<i class="fa fa-bug" aria-hidden="true"></i>
+					</div>
+					<p>Reclamos y Sugerencias</p>
+				</div>
+				<div class="col-sm-4 col-xs-6 services-w3grids">
+					<div class="services-icon hvr-radial-in">
+						<i class="fa fa-key" aria-hidden="true"></i>
+					</div>
+					<p>Solicitud de Llaves</p>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!-- //services -->
+	<!-- gallery -->
+	<div id="gallery" class="gallery">
+		<div class="container">
+			<h3 class="agileinfo_title">Nuestros <span>Eventos</span> </h3>
+		</div>
+		<!-- Owl-Carousel -->
+		<div id="owl-demo" class="owl-carousel text-center agileinfo-gallery-row">
+			<a href="{% static 'images/g1.jpg' %}" class="item g1">
+				<img class="lazyOwl" src="{% static 'images/g1.jpg' %}" title="Feria de Hortalizas" alt=""/>
+				<div class="agile-galry-caption">
+					<h4>Feria de Hortalizas</h4>
+					<span>Feria de Hortalizas</span>
+				</div>
+			</a>
+			<a href="{% static 'images/g2.jpg' %}" class="item g1">
+				<img class="lazyOwl" src="{% static 'images/g2.jpg' %}" title="Día del niño" alt=""/>
+				<div class="agile-galry-caption">
+					<h4>Día del niño</h4>
+					<span>Celebración del Día del Niño</span>
+				</div>
+			</a>
+			<a href="{% static 'images/g3.jpg' %}" class="item g1">
+				<img class="lazyOwl" src="{% static 'images/g3.jpg' %}" title="Navidad" alt=""/>
+				<div class="agile-galry-caption">
+					<h4>Navidad</h4>
+					<span>Celebración de Navidades 2018</span>
+				</div>
+			</a>
+			<a href="{% static 'images/g4.jpg' %}" class="item g1">
+				<img class="lazyOwl" src="{% static 'images/g4.jpg' %}" title="Curso de Corte y Costura" alt=""/>
+				<div class="agile-galry-caption">
+					<h4>Curso de Corte y Costura</h4>
+					<span>Curso de Corte y Costura</span>
+				</div>
+			</a>
+			<a href="{% static 'images/g5.jpg' %}" class="item g1">
+				<img class="lazyOwl" src="{% static 'images/g5.jpg' %}" title="Jornada Informativa" alt=""/>
+				<div class="agile-galry-caption">
+					<h4>Jornada Informativa</h4>
+					<span>Jornada Informativa</span>
+				</div>
+			</a>
+			<a href="{% static 'images/g6.jpg' %}" class="item g1">
+				<img class="lazyOwl" src="{% static 'images/g6.jpg' %}" title="Celebración de Carnavales" alt=""/>
+				<div class="agile-galry-caption">
+					<h4>Celebración de Carnavales</h4>
+					<span>Celebración de Carnavales 2018</span>
+				</div>
+			</a>
+			<a href="{% static 'images/g7.jpg' %}" class="item g1">
+				<img class="lazyOwl" src="{% static 'images/g7.jpg' %}" title="Jornadas Siembra" alt=""/>
+				<div class="agile-galry-caption">
+					<h4>Jornadas Siembra</h4>
+					<span>Siembra de Árboles en los Espacios Comunes</span>
+				</div>
+			</a>
+			<a href="{% static 'images/g8.jpg' %}" class="item g1">
+				<img class="lazyOwl" src="{% static 'images/g8.jpg' %}" title="Jornadas Teatrales" alt=""/>
+				<div class="agile-galry-caption">
+					<h4>Jornadas Teatrales</h4>
+					<span>Jornadas de Teatro de Calle</span>
+				</div>
+			</a>
+			<a href="{% static 'images/g9.jpg' %}" class="item g1">
+				<img class="lazyOwl" src="{% static 'images/g9.jpg' %}" title="Celebración de Fin de Año" alt=""/>
+				<div class="agile-galry-caption">
+					<h4>Celebración de Fin de Año</h4>
+					<span>Celebración de Fin de Año</span>
+				</div>
+			</a>
+			<a href="{% static 'images/g10.jpg' %}" class="item g1">
+				<img class="lazyOwl" src="{% static 'images/g10.jpg' %}" title="Día de las Velitas 2018" alt=""/>
+				<div class="agile-galry-caption">
+					<h4>Día de las Velitas 2018</h4>
+					<span>Día de las Velitas 2018</span>
+				</div>
+			</a>
+		</div>
+		<script type="text/javascript" src="{% static 'js/simple-lightbox.min.js' %}"></script>
+		<script>
+			$(function(){
+				var gallery = $('.agileinfo-gallery-row a').simpleLightbox({navText:		['&lsaquo;','&rsaquo;']});
+			});
+		</script>
+	</div>
+	<!-- //gallery -->
+	<!-- about-team -->
+	<div id="team" class="team">
+		<div class="container">
+			<h3 class="agileinfo_title">Nuestros <span>Voceros</span> </h3>
+			<div class="team-row-agileinfo">
+				<div class="col-md-3 col-sm-6 col-xs-6 team-grids">
+					<div class="thumbnail team-agileits">
+						<img src="{% static 'images/t1.jpg' %}" class="img-responsive" alt=""/>
+						<div class="w3agile-caption">
+							<h4>Nombre Número 1</h4>
+							<p>Administrador</p>
+							<div class="social-w3lsicon">
+								<a href="#"><i class="fa fa-twitter"></i></a>
+								<a href="#"><i class="fa fa-facebook"></i></a>
+								<a href="#"><i class="fa fa-google-plus"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6 col-xs-6 team-grids">
+					<div class="thumbnail team-agileits">
+						<img src="{% static 'images/t2.jpg' %}" class="img-responsive" alt=""/>
+						<div class="w3agile-caption">
+							<h4>Nombre Número 2</h4>
+							<p>Tesorería</p>
+							<div class="social-w3lsicon">
+								<a href="#"><i class="fa fa-twitter"></i></a>
+								<a href="#"><i class="fa fa-facebook"></i></a>
+								<a href="#"><i class="fa fa-google-plus"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6 col-xs-6 team-grids">
+					<div class="thumbnail team-agileits">
+						<img src="{% static 'images/t3.jpg' %}" class="img-responsive" alt=""/>
+						<div class="w3agile-caption">
+							<h4>Nombre Número 3</h4>
+							<p>Contraloría</p>
+							<div class="social-w3lsicon">
+								<a href="#"><i class="fa fa-twitter"></i></a>
+								<a href="#"><i class="fa fa-facebook"></i></a>
+								<a href="#"><i class="fa fa-google-plus"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6 col-xs-6 team-grids">
+					<div class="thumbnail team-agileits">
+						<img src="{% static 'images/t4.jpg' %}" class="img-responsive" alt=""/>
+						<div class="w3agile-caption">
+							<h4>Nombre Número 4</h4>
+							<p>Operaciones</p>
+							<div class="social-w3lsicon">
+								<a href="#"><i class="fa fa-twitter"></i></a>
+								<a href="#"><i class="fa fa-facebook"></i></a>
+								<a href="#"><i class="fa fa-google-plus"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!-- //about-team -->
+	<!-- about-slid -->
+	<div class="about-w3slid jarallax">
+		<div class="subscribe-agileinfo">
+			<div class="container">
+				<h3>Lorem ipsum dolor sit amet</h3>
+				<p>Curabitur nec purus eget urna pulvinar placerat. Integer varius est vitae iaculis suscipit. Nam libero tempore cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus omnis optio </p>
+			</div>
+		</div>
+	</div>
+	<!-- //about-slid -->
+	<!-- blog -->
+	<div id="blog" class="blog cd-section">
+		<div class="container">
+			<h3 class="agileinfo_title">Noticias <span>Destacadas</span> </h3>
+			<div class="blog-agileinfo">
+				<div class="col-md-7 blog-w3grid-img">
+					<a href="#myModal" data-toggle="modal" class="wthree-blogimg">
+						<img src="{% static 'images/img4.jpg' %}" class="img-responsive" alt=""/>
+					</a>
+				</div>
+				<div class="col-md-5 blog-w3grid-text">
+					<h4><a href="#myModal" data-toggle="modal">Pico</a></h4>
+					<h6><a href="#">Por Maria</a> - 2 de Enero, 2017 </h6>
+					<p>Se vende Pico en excelente estado de conservación. Lo vendo en Bs. 150000 o escucho sugerencias para hacer trueques</p>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="blog-agileinfo blog-agileinfo-mdl">
+				<div class="col-md-7 blog-w3grid-img blog-img-rght">
+					<a href="#myModal" data-toggle="modal" class="wthree-blogimg">
+						<img src="{% static 'images/img5.jpg' %}" class="img-responsive" alt=""/>
+					</a>
+				</div>
+				<div class="col-md-5 blog-w3grid-text">
+					<h4><a href="#myModal" data-toggle="modal">Aenean nec purus ac</a></h4>
+					<h6><a href="#">By Admin</a> - Nov 12th, 2016 </h6>
+					<p>Sed interdum interdum accumsan. Aenean nec purus ac orci finibus facilisis. In sit amet placerat nisl, in auctor sapien. Donec ultricies faucibus ante in mattis earum rerum hic a sapiente delectus in auctor sapien. </p>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="blog-agileinfo">
+				<div class="col-md-7 blog-w3grid-img">
+					<a href="#myModal" data-toggle="modal" class="wthree-blogimg">
+						<img src="{% static 'images/img3.jpg' %}" class="img-responsive" alt=""/>
+					</a>
+				</div>
+				<div class="col-md-5 blog-w3grid-text">
+					<h4><a href="#myModal" data-toggle="modal">Mattis earum rerum</a></h4>
+					<h6><a href="#">By Admin</a> - Nov 25th, 2016 </h6>
+					<p>Sed interdum interdum accumsan. Aenean nec purus ac orci finibus facilisis. In sit amet placerat nisl, in auctor sapien. Donec ultricies faucibus ante in mattis earum rerum hic a sapiente delectus in auctor sapien. </p>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!-- //blog -->
+	<!-- modal -->
+	<div class="modal about-modal w3-agileits fade" id="myModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				</div>
+				<div class="modal-body">
+					<img src="{% static 'images/img3.jpg' %}" alt="">
+					<h5>Cras rutrum iaculis enim</h5>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rutrum iaculis enim, non convallis felis mattis at. Donec fringilla lacus eu pretium rutrum. Cras aliquet congue ullamcorper. Etiam mattis eros eu ullamcorper volutpat. Proin ut dui a urna efficitur varius. uisque molestie cursus mi et congue consectetur adipiscing elit cras rutrum iaculis enim, Lorem ipsum dolor sit amet, non convallis felis mattis at. Maecenas sodales tortor ac ligula ultrices dictum et quis urna. Etiam pulvinar metus neque, eget porttitor massa vulputate. </p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //modal -->
+	<!-- subscribe -->
+	<div class="subscribe jarallax">
+		<div class="subscribe-agileinfo">
+			<div class="container">
+				<h3>Sistema Administrativo</h3>
+				<form action="#" method="post">
+					<input type="text" name="name" placeholder="Su Nombre" required="">
+					<input type="email" name="email" placeholder="Contraseña" required="">
+					<input type="submit" value="Iniciar Sesión">
+					<div class="clearfix"> </div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- //subscribe -->
+	<!-- map -->
+	<div class="container">
+	<div id="contact">
+		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group mr-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+          </div>
+          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+            <span data-feather="calendar"></span>
+            This week
+          </button>
+        </div>
+      </div>
+		<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+		<div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Header</th>
+              <th>Header</th>
+              <th>Header</th>
+              <th>Header</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1,001</td>
+              <td>Lorem</td>
+              <td>ipsum</td>
+              <td>dolor</td>
+              <td>sit</td>
+            </tr>
+            <tr>
+              <td>1,002</td>
+              <td>amet</td>
+              <td>consectetur</td>
+              <td>adipiscing</td>
+              <td>elit</td>
+            </tr>
+            <tr>
+              <td>1,003</td>
+              <td>Integer</td>
+              <td>nec</td>
+              <td>odio</td>
+              <td>Praesent</td>
+            </tr>
+            <tr>
+              <td>1,003</td>
+              <td>libero</td>
+              <td>Sed</td>
+              <td>cursus</td>
+              <td>ante</td>
+            </tr>
+            <tr>
+              <td>1,004</td>
+              <td>dapibus</td>
+              <td>diam</td>
+              <td>Sed</td>
+              <td>nisi</td>
+            </tr>
+            <tr>
+              <td>1,005</td>
+              <td>Nulla</td>
+              <td>quis</td>
+              <td>sem</td>
+              <td>at</td>
+            </tr>
+            <tr>
+              <td>1,006</td>
+              <td>nibh</td>
+              <td>elementum</td>
+              <td>imperdiet</td>
+              <td>Duis</td>
+            </tr>
+            <tr>
+              <td>1,007</td>
+              <td>sagittis</td>
+              <td>ipsum</td>
+              <td>Praesent</td>
+              <td>mauris</td>
+            </tr>
+            <tr>
+              <td>1,008</td>
+              <td>Fusce</td>
+              <td>nec</td>
+              <td>tellus</td>
+              <td>sed</td>
+            </tr>
+            <tr>
+              <td>1,009</td>
+              <td>augue</td>
+              <td>semper</td>
+              <td>porta</td>
+              <td>Mauris</td>
+            </tr>
+            <tr>
+              <td>1,010</td>
+              <td>massa</td>
+              <td>Vestibulum</td>
+              <td>lacinia</td>
+              <td>arcu</td>
+            </tr>
+            <tr>
+              <td>1,011</td>
+              <td>eget</td>
+              <td>nulla</td>
+              <td>Class</td>
+              <td>aptent</td>
+            </tr>
+            <tr>
+              <td>1,012</td>
+              <td>taciti</td>
+              <td>sociosqu</td>
+              <td>ad</td>
+              <td>litora</td>
+            </tr>
+            <tr>
+              <td>1,013</td>
+              <td>torquent</td>
+              <td>per</td>
+              <td>conubia</td>
+              <td>nostra</td>
+            </tr>
+            <tr>
+              <td>1,014</td>
+              <td>per</td>
+              <td>inceptos</td>
+              <td>himenaeos</td>
+              <td>Curabitur</td>
+            </tr>
+            <tr>
+              <td>1,015</td>
+              <td>sodales</td>
+              <td>ligula</td>
+              <td>in</td>
+              <td>libero</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+		<div class="clearfix"></div>
+	</div>
+	</main>
+	</div>
+	<!-- //map -->
+	<!-- contact -->
+	<div class="contact">
+		<div class="container">
+			<h3 class="agileinfo_title">Envíenos <span>Sugerencias</span> </h3>
+			<form action="#" method="post">
+				<div class="col-sm-6 contact-left">
+					<input type="text" name="Name" placeholder="Su Nombre" required="">
+					<input type="email" name="Email" placeholder="Correo" required="">
+					<input type="text" name="Mobile Number" placeholder="Telefono" required="">
+				</div>
+				<div class="col-sm-6 contact-right">
+					<textarea name="Message" placeholder="Mensaje" required=""></textarea>
+					<input type="submit" value="Submit" >
+				</div>
+				<div class="clearfix"></div>
+			</form>
+		</div>
+	</div>
+	<!-- //contact -->
+	<!-- copy rights start here -->
+	<div class="copyw3-agile">
+		<div class="container">
+			<div class="social-w3lsicon footer-w3icons">
+				<a href="#"><i class="fa fa-facebook"></i></a>
+				<a href="#"><i class="fa fa-google-plus"></i></a>
+				<a href="#"><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-dribbble"></i></a>
+			</div>
+			<p>© 2019. Todos los Derechos Reservados | Diseñado por  Misael Ferrer misaelferrer@gmail.com </p>
+		</div>
+	</div>
+	<!-- //copy right end here -->
+	<!-- Owl-Carousel-JavaScript -->
+
+	<script src="{% static 'js/owl.carousel.js' %}"></script>
+	<script>
+		$(document).ready(function() {
+			$("#owl-demo").owlCarousel ({
+				items : 4,
+				lazyLoad : true,
+				autoPlay : true,
+				pagination : false,
+			});
+		});
+	</script>
+	<!-- //Owl-Carousel-JavaScript -->
+	<!-- jarallax -->
+	<script src="{% static 'js/SmoothScroll.min.js' %}"></script>
+	<script src="{% static 'js/jarallax.js' %}"></script>
+	<script type="text/javascript">
+		/* init Jarallax */
+		$('.jarallax').jarallax({
+			speed: 0.5,
+			imgWidth: 1366,
+			imgHeight: 768
+		})
+	</script>
+	<!-- //jarallax -->
+	<!-- start-smooth-scrolling -->
+	<script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
+	<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){
+					event.preventDefault();
+
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+	</script>
+	<!-- //end-smooth-scrolling -->
+	<!-- smooth-scrolling-of-move-up -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+			var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear'
+			};
+			*/
+
+			$().UItoTop({ easingType: 'easeOutQuart' });
+
+		});
+	</script>
+	<!-- //smooth-scrolling-of-move-up -->
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script src="https://getbootstrap.com/docs/4.3/examples/dashboard/dashboard.js"></script>
+</body>
+</html>
