@@ -7,5 +7,4 @@ class GastoAdmin(admin.ModelAdmin):
 
 admin.site.register(Gasto,GastoAdmin)
 admin.site.register(Pago)
-admin.site.register(Monedas)
 admin.site.register(Deuda)
