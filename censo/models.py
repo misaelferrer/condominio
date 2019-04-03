@@ -1,169 +1,149 @@
 from django.db import models
-
-# Create your models here.
-
-class CarnetPatria(models.Model):
-	nombre = models.CharField(max_length=15, null=True)  # CharField
-	serial = models.CharField(max_length=15, null=True) # CharField
-	codigo = models.CharField(max_length=15, null=True)  # CharField
-	imagen = models.ImageField(upload_to='static/carnet_patria/', null=True)  # ImageField
-
-	def __str__ (self):
-		return self.serial
+from django.utils.safestring import mark_safe
 
 class Mes(models.Model):
-	mes = models.CharField(max_length=15, null=True) # CharField
+    mes = models.CharField(max_length=15, null=True)  # CharField
 
-	def __str__ (self):
-		return self.mes
+    def __str__(self):
+        return self.mes
 
 
 class Documento(models.Model):
-	nombre = models.CharField(max_length=15, null=True) # CharField
-	documento = models.ImageField(upload_to='static/documentos/', null=True)  # ImageField
-	def __str__ (self):
-		return self.nombre
+    nombre = models.CharField(max_length=15, null=True)  # CharField
+    documento = models.ImageField(upload_to='static/documentos/', null=True)  # ImageField
 
+    def __str__(self):
+        return self.nombre
 
-class Mision(models.Model):
-	mision = models.CharField(max_length=35, null=True) # CharField
+    def url(self):
+        return self.documento
 
-	def __str__ (self):
-		return self.mision
+    def foto_documento(self):
+        # used in the admin site model as a "thumbnail"
+        return mark_safe('<img src="../../../' + self.url().__str__() + '" width="70" height="50" />')
 
 
 class Sexo(models.Model):
-	sexo = models.CharField(max_length=15, null=True) # CharField
+    sexo = models.CharField(max_length=15, null=True)  # CharField
 
-	def __str__ (self):
-		return self.sexo
+    def __str__(self):
+        return self.sexo
 
 
 class Nacionalidad(models.Model):
-	nacionalidad = models.CharField(max_length=15, null=True) # CharField
+    nacionalidad = models.CharField(max_length=15, null=True)  # CharField
 
-	def __str__ (self):
-		return self.nacionalidad
+    def __str__(self):
+        return self.nacionalidad
 
 
-class Calle(models.Model):
-	nombre = models.CharField(max_length=50,null=True) # TextField
-	numero = models.CharField(max_length=10, null=True) # CharField
-	
-	def __str__ (self):
-		return self.nombre 
+class Apartamento(models.Model):
+    foto = models.ImageField(upload_to='static/apartamentos/', null=True)  # ImageField
+    numero = models.CharField(max_length=10, null=True)  # CharField
+    observaciones = models.TextField(null=True)  # TextField
+    cantidad_habitaciones = models.IntegerField(null=True)  # IntegerField
 
-class Casa(models.Model):
-	foto = models.ImageField(upload_to='static/casas/', null=True)  # ImageField
-	numero = models.CharField(max_length=10, null=True) # CharField
-	observaciones = models.TextField(null=True) # TextField
-	calle = models.ForeignKey(Calle, on_delete=models.DO_NOTHING, null=True) # Calle
-	cantidad_habitaciones = models.IntegerField(null=True) # IntegerField
+    def __str__(self):
+        return self.numero
 
-	def __str__ (self):
-		return self.numero
+    def url(self):
+        return self.foto
+
+    def foto_apartamento(self):
+        # used in the admin site model as a "thumbnail"
+        return mark_safe('<img src="../../../' + self.url().__str__() + '" width="70" height="50" />')
+
 
 class Discapacidad(models.Model):
-	discapacidad = models.CharField(max_length=30, null=True) # CharField
+    discapacidad = models.CharField(max_length=30, null=True)  # CharField
 
-	def __str__ (self):
-		return self.discapacidad
+    def __str__(self):
+        return self.discapacidad
 
 
 class Oficio(models.Model):
-	oficio = models.CharField(max_length=30, null=True) # CharField
+    oficio = models.CharField(max_length=30, null=True)  # CharField
 
-	def __str__ (self):
-		return self.oficio 
+    def __str__(self):
+        return self.oficio
 
-
-class TratamientoPermanente(models.Model):
-	enfermedad = models.CharField(max_length=30, null=True) # CharField
-	medicina = models.CharField(max_length=30, null=True) # CharField
-	informe_medico = models.ImageField(upload_to='static/informes_medicos/', null=True)  # ImageField
-	recipe = models.ImageField(upload_to='static/recipes/', null=True)  # ImageField
-
-	def __str__ (self):
-		return self.enfermedad + ' - ' + self.medicina
 
 class Habilidad(models.Model):
-	habilidad = models.CharField(max_length=30, null=True) # CharField
+    habilidad = models.CharField(max_length=30, null=True)  # CharField
 
-	def __str__ (self):
-		return self.habilidad 
+    def __str__(self):
+        return self.habilidad
+
 
 class InstitucionEducativa(models.Model):
-	institucion_educativa = models.CharField(max_length=30, null=True) # CharField
+    institucion_educativa = models.CharField(max_length=30, null=True)  # CharField
 
-	def __str__ (self):
-		return self.institucion_educativa 
+    def __str__(self):
+        return self.institucion_educativa
+
 
 class Grado(models.Model):
-	grado = models.CharField(max_length=30, null=True) # CharField
-	institucion_educativa = models.ForeignKey(InstitucionEducativa, on_delete=models.DO_NOTHING, null=True) # InstitucionEducativa
+    grado = models.CharField(max_length=30, null=True)  # CharField
+    institucion_educativa = models.ForeignKey(InstitucionEducativa, on_delete=models.DO_NOTHING,
+                                              null=True)  # InstitucionEducativa
 
-	def __str__ (self):
-		return self.grado 
+    def __str__(self):
+        return self.grado
 
-class Etnia(models.Model):
-	etnia = models.CharField(max_length=30, null=True) # CharField
-
-	def __str__ (self):
-		return self.etnia
-class Familia(models.Model):
-	nombre = models.CharField(max_length=20, null=True) # CharField
-	casa = models.ForeignKey(Casa, on_delete=models.DO_NOTHING, null=True) # Casa
-
-	def __str__ (self):
-		return self.nombre
 
 class Titulo(models.Model):
-	titulo = models.CharField(max_length=30) # CharField
-	institucion_educativa = models.ForeignKey(InstitucionEducativa, on_delete=models.DO_NOTHING, null=True) # InstitucionEducativa
+    titulo = models.CharField(max_length=30)  # CharField
+    institucion_educativa = models.ForeignKey(InstitucionEducativa, on_delete=models.DO_NOTHING,
+                                              null=True)  # InstitucionEducativa
 
-	def __str__ (self):
-		return self.titulo
+    def __str__(self):
+        return self.titulo
 
 
 class Persona(models.Model):
-	foto = models.ImageField(upload_to='static/personas/', null=True) # ImageField
-	nacionalidad = models.ForeignKey(Nacionalidad, on_delete=models.DO_NOTHING, null=True) # Nacionalidad
-	cedula = models.CharField(max_length=10, null=True) # CharField
-	nombre = models.CharField(max_length=20, null=True) # CharField
-	apellido = models.CharField(max_length=20, null=True) # CharField
-	sexo = models.ForeignKey(Sexo, on_delete=models.DO_NOTHING, null=True)  # Sexo
-	documento = models.ManyToManyField(Documento)  # Documento
-	carnet_patria = models.ForeignKey(CarnetPatria, on_delete=models.DO_NOTHING, null=True)  # CarnetPatria
-	discapaz = models.BooleanField() # BooleanField
-	discapacidad = models.ManyToManyField(Discapacidad) # Discapacidad
-	tratamiento_permanente = models.ManyToManyField(TratamientoPermanente)  # TratamientoPermanente
-	mision = models.ManyToManyField(Mision)  # Mision
-	familia = models.ForeignKey(Familia, on_delete=models.DO_NOTHING, null=True) # Familia
-	oficio = models.ForeignKey(Oficio, on_delete=models.DO_NOTHING, null=True) # Oficio
-	fecha_nacimiento = models.DateField(null=True) # DateField
-	vive_desde = models.IntegerField(null=True) # IntegerField
-	habilidad = models.ManyToManyField(Habilidad) # Habilidad
-	titulos = models.ManyToManyField(Titulo) # Titulo
-	ultimo_grado_aprobado = models.ForeignKey(Grado, on_delete=models.DO_NOTHING, null=True) # Grado
-	indigena = models.BooleanField() # BooleanField
-	etnia = models.ForeignKey(Etnia, on_delete=models.DO_NOTHING, null=True) # Etnia
-	ingreso_mensual = models.FloatField(null=True) # FloatField
-	observaciones = models.TextField(null=True) # TextField
+    foto = models.ImageField(upload_to='static/personas/', null=True)  # ImageField
+    nacionalidad = models.ForeignKey(Nacionalidad, on_delete=models.DO_NOTHING, null=True)  # Nacionalidad
+    apartamento = models.ForeignKey(Apartamento, on_delete=models.DO_NOTHING, null=True)  # Nacionalidad
+    cedula = models.CharField(max_length=10, null=True)  # CharField
+    nombre = models.CharField(max_length=20, null=True)  # CharField
+    apellido = models.CharField(max_length=20, null=True)  # CharField
+    sexo = models.ForeignKey(Sexo, on_delete=models.DO_NOTHING, null=True)  # Sexo
+    documento = models.ManyToManyField(Documento)  # Documento
+    discapaz = models.BooleanField()  # BooleanField
+    discapacidad = models.ManyToManyField(Discapacidad)  # Discapacidad
+    oficio = models.ForeignKey(Oficio, on_delete=models.DO_NOTHING, null=True)  # Oficio
+    fecha_nacimiento = models.DateField(null=True)  # DateField
+    vive_desde = models.IntegerField(null=True)  # IntegerField
+    habilidad = models.ManyToManyField(Habilidad)  # Habilidad
+    titulos = models.ManyToManyField(Titulo)  # Titulo
+    ultimo_grado_aprobado = models.ForeignKey(Grado, on_delete=models.DO_NOTHING, null=True)  # Grado
+    indigena = models.BooleanField()  # BooleanField
+    ingreso_mensual = models.FloatField(null=True)  # FloatField
+    observaciones = models.TextField(null=True)  # TextField
 
-	def __str__ (self):
-		return self.nombre + ' - ' + self.apellido
+    def url(self):
+        return self.foto
+
+    def foto_persona(self):
+        # used in the admin site model as a "thumbnail"
+        return mark_safe('<img src="../../../' + self.url().__str__() + '" width="70" height="50" />')
+
+    def __str__(self):
+        return self.nombre + ' - ' + self.apellido
+
 
 class TipoParentesco(models.Model):
-	tipoParentesco = models.CharField(max_length=30, null=True) # CharField
+    tipoParentesco = models.CharField(max_length=30, null=True)  # CharField
 
-	def __str__ (self):
-		return self.tipoParentesco
+    def __str__(self):
+        return self.tipoParentesco
+
 
 class Parentesco(models.Model):
-	persona = models.ForeignKey(Persona, related_name='persona', on_delete=models.DO_NOTHING, null=True) # Persona
-	pariente = models.ForeignKey(Persona, related_name='pariente', on_delete=models.DO_NOTHING, null=True) # Persona
-	tipoParentesco = models.ForeignKey(TipoParentesco, on_delete=models.DO_NOTHING, null=True) # TipoParentesco
+    persona = models.ForeignKey(Persona, related_name='persona', on_delete=models.DO_NOTHING, null=True)  # Persona
+    pariente = models.ForeignKey(Persona, related_name='pariente', on_delete=models.DO_NOTHING, null=True)  # Persona
+    tipoParentesco = models.ForeignKey(TipoParentesco, on_delete=models.DO_NOTHING, null=True)  # TipoParentesco
 
-	def __str__ (self):
-		return self.tipoParentesco
+    def __str__(self):
+        return self.tipoParentesco
 
